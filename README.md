@@ -1,6 +1,7 @@
 # 1. Create Virtual Environment
 
 python -m venv .VirtualEnvaramentName
+
 eg :-) python -m venv .venv
 
 ##### Activate virtual Environment
