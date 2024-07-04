@@ -32,6 +32,6 @@ urlpatterns = [
     path('pastha/',include('pastha.urls')),
 
 
-
+# This path is for hot reloading, auto reloading, always at last, since it send zip and it is a heavy path
     path("__reload__/",include("django_browser_reload.urls")),
 ]

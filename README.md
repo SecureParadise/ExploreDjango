@@ -173,6 +173,89 @@ Home Page
 {% endblock %}
 
 {% block content %}
-<h1> Django </h1>
+
+ Django 
+
 {% endblock %}
+
+
+# Tailwind CSS and  Admin pannel 
+
+<h1> TailWind CSS Installation </h1>
+
+pip install django-tailwind
+
+--> for hot reloading
+
+pip install 'django-tailwind[reload]'
+
+## Install pip
+python -m ensurepip --upgrade (works 90%)
+
+python -m pip install --upgrade
+
+add --> "tailwind" in 'settings.py 'INSTALLED_APPS'
+
+--> python manage.py tailwind init
+some packege will be download which thake some time
+--> it will ask for name,you can skip by pressing inter or just assign name
+
+By default name is theme
+
+Now add 'theme',  in setings.py's 'INSTALLED_APPS' section
+
+ADD
+
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = ['127.0.01']
+
+ -->For error handling, to run css we need nodeJS
+    --> node pathe, where npm in terminal
+        --> In order to handle space in path use r"windows_path"
+ NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+#### python  manage.py tailwind install
+--> /DjangoProj/DjangoProj/theme 
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+is generated
+
+In /theme/tempaltes/base.html 
+
+line no 1 i.e {% load static tailwind_tags %} and line no 9 i.e {% tailwind_css %}
+
+since we already have template i.e templates/layout.html , so copy and paste line no 1 to top of layout.html and 9 above body
+
+--> Now we have to run two server one for css and one for manage.py
+
+1) python manage.py runserver
+2) python manage.py runserver tailwind
+for production
+2) python manage.py runserver tailwind build
+
+INSTALLED_APPS = [
+    'django_browser_reload',
+]
+
+    <h6> <-- This config. is gemerally copied --></h6>
+MIDDLEWARE = [
+    'django_browser_reload.middleware.BrowserReloadMiddleware',
+]
+
+# ADMIN PANEL
+--> seems like old school to make compitable with every browser
+
+--> By Injecting our own css we can modify it
+
+--> migration talks with DataBase by  default we have db.sqlite3
+
+--> We don't talk with db directly with django on our behalf django's orm talk with database
+
+That ORM command is
+1) python manage.py migrate
+
+we get authnication,admin for admin pannel which fuillfilled by this migration
+
+--> To craete super user
+2) python manage.py createsuperuser
+
+
 
