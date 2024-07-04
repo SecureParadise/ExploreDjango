@@ -22,6 +22,7 @@ from django.contrib import admin
 from django.urls import path,include
 # Import views.py
 from . import views
+# " . " mean from current directory
 
 urlpatterns = [
     path('admin/', admin.site.urls),
