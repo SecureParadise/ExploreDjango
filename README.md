@@ -226,10 +226,10 @@ since we already have template i.e templates/layout.html , so copy and paste lin
 
 --> Now we have to run two server one for css and one for manage.py
 
-1) python manage.py runserver
-2) python manage.py runserver tailwind
+## python manage.py runserver (terminal 1)
+## python manage.py tailwind start (termianl 2)
 for production
-2) python manage.py runserver tailwind build
+## python manage.py runserver tailwind build
 
 INSTALLED_APPS = [
     'django_browser_reload',
@@ -257,5 +257,45 @@ we get authnication,admin for admin pannel which fuillfilled by this migration
 --> To craete super user
 2) python manage.py createsuperuser
 
+# Handle Model and Urls
+<h1> Handle Model and Urls </h1>
+
+## To Change Root Password
+python manage.py changepassword super_user_name
 
 
+In models.py I created models
+
+### handle pillow
+--> In oreder to handle image in DB ImageField
+pip install Pillow
+
+### settings.py
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+### urls.py --> project
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+[
+  path("__reload__/",include("django_browser_reload.urls")),
+] + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
+
+## python manage.py makemigrations pastha
+##  python manage.py migrate
+
+
+# admin.py -> pastha
+
+from .models import vedaVarity
+
+
+admin.site.register(vedaVarity)
+
+### After making change in models then again run command
+
+python manage.py makemigrations "app_name"
+python manage.py migrate
